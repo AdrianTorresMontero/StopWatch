@@ -6,6 +6,7 @@ body{
 .screen{
   height: 600px;
   width: 450px;
+  box-shadow: 1px 1px 5px rgb(173, 173, 173);
 }
 
 .time{
@@ -33,4 +34,12 @@ body{
   background-color: rgb(158, 158, 158);
   color: white;
   cursor: pointer;
+}
+
+.start{
+  background-color: green;
+}
+
+.stop{
+  background-color: darkred;
 }

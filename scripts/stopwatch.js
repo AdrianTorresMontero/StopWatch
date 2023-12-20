@@ -17,7 +17,6 @@ document.querySelector('.js-pause')
 
 
 function startTimer(seconds=0,minutes=0){
-  console.log(minutes,seconds)
   clock = setInterval(()=>{
     if (seconds<9 && minutes<10){
       document.querySelector('.js-time')
@@ -51,9 +50,7 @@ function startTimer(seconds=0,minutes=0){
       document.querySelector('.js-start')
         .style.visibility = 'visible';
     }
-
-  },1)
-
+  },1000)
 }
 
 
@@ -76,11 +73,8 @@ function pause(){
     let number= document.querySelector('.js-time').innerText
     let numbers= []
     numbers = number.split(":") 
-    console.log(numbers[0],numbers[1])
     let min = Number(numbers[0])
     let sec = Number(numbers[1])
     startTimer(sec,min);
   }
-    
-  
 }
