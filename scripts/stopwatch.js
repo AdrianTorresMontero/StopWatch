@@ -24,17 +24,18 @@ function startTimer(){
     }else if(seconds>=9 && seconds<59 && minutes>=10){
       document.querySelector('.js-time')
         .innerHTML =`${minutes}:${seconds+=1}` 
-    }else if(seconds>=59 &&minutes>=10){
+    }else if(seconds>=59 &&minutes>=10 && minutes<59){
       document.querySelector('.js-time')
         .innerHTML =`${minutes+=1}:00`
       seconds=0
       //finish 59 minutes
+    }else if(seconds===59 && minutes===59){
+      document.querySelector('.js-time')
+        .innerHTML =`00:00`
+      seconds=0
+      minutes=0
+      //finish 59 minutes
+      clearInterval(clock);
     }
-    
   },1)
-  if(document.querySelector('.js-time').innerHTML=== '59:59'){
-    clearInterval(clock);
-  }
-  //clearInterval(clock);
-  console.log(clock);
 }
