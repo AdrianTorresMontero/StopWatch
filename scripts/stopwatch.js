@@ -1,11 +1,23 @@
 document.querySelector('.js-start')
   .addEventListener('click',()=>{
     startTimer();
+    document.querySelector('.js-start')
+      .style.visibility = 'hidden';
   })
 
-function startTimer(){
-  let seconds= 0;
-  let minutes= 0;
+document.querySelector('.js-stop')
+  .addEventListener('click',()=>{
+    stopTimer();
+  })
+
+document.querySelector('.js-pause')
+  .addEventListener('click',()=>{
+    pause()
+  })
+
+
+function startTimer(seconds=0,minutes=0){
+  console.log(minutes,seconds)
   clock = setInterval(()=>{
     if (seconds<9 && minutes<10){
       document.querySelector('.js-time')
@@ -36,6 +48,39 @@ function startTimer(){
       minutes=0
       //finish 59 minutes
       clearInterval(clock);
+      document.querySelector('.js-start')
+        .style.visibility = 'visible';
     }
+
   },1)
+
+}
+
+
+function stopTimer(){
+  document.querySelector('.js-time')
+        .innerHTML =`00:00`
+  clearInterval(clock);
+  document.querySelector('.js-start')
+      .style.visibility = 'visible';
+}
+
+function pause(){
+  let status =document.querySelector('.js-pause')
+
+  if(status.innerText === 'Pause'){
+    status.innerHTML = 'Continue';
+    clearInterval(clock);
+  }else{
+    status.innerHTML = 'Pause';
+    let number= document.querySelector('.js-time').innerText
+    let numbers= []
+    numbers = number.split(":") 
+    console.log(numbers[0],numbers[1])
+    let min = Number(numbers[0])
+    let sec = Number(numbers[1])
+    startTimer(sec,min);
+  }
+    
+  
 }
